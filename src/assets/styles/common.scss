@@ -31,3 +31,44 @@ h2 {
   background-color: $accent;
 }
 
+.list {
+  list-style: none;
+  padding: 50px 0 80px;
+  text-align: left;
+  &-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      background: url('/src/assets/img/heart.png') no-repeat 50% 50%;
+    }
+  }
+}
+
+.instructions {
+  max-width: 516px;
+  margin: 0 auto;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: .1em;
+  color: $textMuted;
+  @media(max-width: 769px) {
+    font-size: 15px;
+    letter-spacing: .07em;
+    line-height: 25px;
+  }
+}
+
+

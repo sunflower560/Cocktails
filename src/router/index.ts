@@ -10,7 +10,7 @@ const router = createRouter({
     },
     {
       name: 'cocktail',
-      path: '/cocktails:id',
+      path: '/cocktails/:id',
       component: () => import('@/pages/Cocktail.vue')
     },
     {
