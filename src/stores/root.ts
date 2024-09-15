@@ -1,9 +1,7 @@
 import { defineStore } from 'pinia'
 import {ref} from 'vue'
 import axios from 'axios'
-import { INGREDIENTS_URL, COCKTAILS_BY_INGREDIENT_URL } from '@/constants'
-import type {ICocktails, IIngredient} from "@/types/type";
-
+import type {ICocktails, IIngredient, ICocktail} from "@/types/type";
 
 export const useRootStore = defineStore('root', () => {
   const ingredients = ref<IIngredient[]>([])
@@ -11,12 +9,12 @@ export const useRootStore = defineStore('root', () => {
   const ingredient = ref<string>('')
 
   const getIngredients = async () => {
-    const response = await axios.get(INGREDIENTS_URL)
+    const response = await axios.get(`${import.meta.env.VITE_FB_URL}list.php?i=list`)
     ingredients.value = response.data.drinks
   }
 
   const getCocktails = async (ingredient: string) => {
-    const response = await axios.get(`${COCKTAILS_BY_INGREDIENT_URL}${ingredient}`)
+    const response = await axios.get(`${import.meta.env.VITE_FB_URL}filter.php?i=${ingredient}`)
     cocktails.value = response.data.drinks
   }
 

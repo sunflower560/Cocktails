@@ -5,7 +5,7 @@
     <div class="main">
       <div>
         <el-button v-if="isBackButtonVisible" @click="$emit('back')" type="primary" :icon="Back" circle class="back" />
-        <el-button class="btn">Get random cocktail</el-button>
+        <el-button @click="goForCocktailRandom" class="btn">Get random cocktail</el-button>
       </div>
 
       <slot></slot>
@@ -14,12 +14,13 @@
 </template>
 
 <script setup lang="ts">
+import {useRoute, useRouter} from "vue-router";
 import {
   Back
 } from '@element-plus/icons-vue'
+import {computed} from "vue";
 
-defineEmits(['back'])
-
+const emits = defineEmits(['back', 'getCocktail'])
 defineProps({
   imgUrl: {
     type: String,
@@ -30,6 +31,17 @@ defineProps({
     default: true
   }
 })
+
+const router = useRouter()
+const route = useRoute()
+
+const goForCocktailRandom = () => {
+  router.push('/random')
+
+  if(route.name === 'cocktailRandom'){
+    emits('getCocktail')
+  }
+}
 </script>
 
 <style lang="scss" scoped>

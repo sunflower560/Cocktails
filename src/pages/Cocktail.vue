@@ -1,5 +1,5 @@
 <template>
-  <main-layout is-back-button-visible @back="goBack" :img-url="cocktail?.strDrinkThumb || imgUrl">
+  <main-layout @back="goBack" :img-url="cocktail?.strDrinkThumb || imgUrl">
     <div class="wrapper" v-if="cocktail">
       <div class="info">
         <h2>{{ cocktail.strDrink }}</h2>
@@ -28,8 +28,7 @@
 import {onMounted, ref, computed} from 'vue'
 import {useRoute, useRouter} from 'vue-router';
 import axios from 'axios'
-import {COCKTAIL_BY_ID} from '@/constants'
-import {ICocktail, IIngredientByCocktail} from '@/types/type';
+import type {ICocktail, IIngredientByCocktail} from '@/types/type';
 import MainLayout from "@/Layouts/MainLayout.vue";
 
 const imgUrl = new URL('@/assets/img/bg-2.png', import.meta.url).href
@@ -39,7 +38,7 @@ const router = useRouter()
 const cocktail = ref<ICocktail>()
 
 const getCocktail = async () => {
-  const response = await axios.get(`${COCKTAIL_BY_ID}${route.params.id}`)
+  const response = await axios.get(`${import.meta.env.VITE_FB_URL}lookup.php?i=${route.params.id}`)
   cocktail.value = response.data.drinks[0] || null
 }
 

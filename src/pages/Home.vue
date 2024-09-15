@@ -76,7 +76,6 @@ onMounted(() => {
   width: 100%;
   display: flex;
   justify-content: center;
-  //align-items: center;
 
   .info {
     padding: 80px 0;
