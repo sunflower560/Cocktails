@@ -3,10 +3,9 @@
     <div class="img" :style="{ backgroundImage: `url(${imgUrl})` }"></div>
 
     <div class="main">
-      <div>
         <el-button v-if="isBackButtonVisible" @click="$emit('back')" type="primary" :icon="Back" circle class="back" />
         <el-button @click="goForCocktailRandom" class="btn">Get random cocktail</el-button>
-      </div>
+<!--        пофиксить размеры-->
 
       <slot></slot>
     </div>
@@ -18,7 +17,6 @@ import {useRoute, useRouter} from "vue-router";
 import {
   Back
 } from '@element-plus/icons-vue'
-import {computed} from "vue";
 
 const emits = defineEmits(['back', 'getCocktail'])
 defineProps({
@@ -98,6 +96,11 @@ const goForCocktailRandom = () => {
       &:hover, &:active{
         border-color: $accent;
         transition: all linear 0.15s;
+      }
+      @media (max-width: 450px) {
+        position: absolute;
+        left: 40px;
+        top: 32px;
       }
     }
 

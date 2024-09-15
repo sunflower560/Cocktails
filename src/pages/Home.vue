@@ -80,6 +80,11 @@ onMounted(() => {
   .info {
     padding: 80px 0;
     text-align: center;
+    h2 {
+      @media(max-width: 321px){
+        font-size: 17px;
+      }
+    }
   }
 
   .el-select {
@@ -93,7 +98,12 @@ onMounted(() => {
     padding-top: 50px;
     line-height: 36px;
     letter-spacing: 0.1em;
-    color: $textMuted
+    color: $textMuted;
+    @media(max-width: 321px){
+      width: 250px;
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
 
   img {

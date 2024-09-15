@@ -9,7 +9,18 @@
           <swiper
               :slides-per-view="3"
               :space-between="50"
-              class="swiper">
+              class="swiper"
+              :breakpoints="{
+                320: {
+                  slidesPerView: 2,
+                  spaceBetween: 20
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 50
+                }
+              }"
+          >
             <swiper-slide
                 v-for="(ingredient, idx) in ingredients"
                 :key="idx"
@@ -91,8 +102,10 @@ onMounted(() => {
       padding: 50px 0;
 
       .swiper {
-        max-width: 586px; // пофикисть размеры
-
+        max-width: 586px;
+        @media (max-width: 769px) {
+          max-width: 350px;
+        }
         .name {
           padding-top: 20px;
         }
