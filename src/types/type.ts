@@ -24,5 +24,3 @@ export interface IIngredientByCocktail {
     measure?: string | null | undefined
 }
 
-
-

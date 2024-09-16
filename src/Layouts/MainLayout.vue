@@ -5,7 +5,6 @@
     <div class="main">
         <el-button v-if="isBackButtonVisible" @click="$emit('back')" type="primary" :icon="Back" circle class="back" />
         <el-button @click="goForCocktailRandom" class="btn">Get random cocktail</el-button>
-<!--        пофиксить размеры-->
 
       <slot></slot>
     </div>
@@ -33,7 +32,7 @@ defineProps({
 const router = useRouter()
 const route = useRoute()
 
-const goForCocktailRandom = () => {
+const goForCocktailRandom = (): void => {
   router.push('/random')
 
   if(route.name === 'cocktailRandom'){

@@ -51,16 +51,16 @@ import MainLayout from "@/Layouts/MainLayout.vue";
 import {storeToRefs} from "pinia";
 import AppCocktail from "@/components/cocktails/AppCocktail.vue";
 
-const imgUrl = new URL('@/assets/img/bg-1.png', import.meta.url).href
+const imgUrl: string = new URL('@/assets/img/bg-1.png', import.meta.url).href
 const rootStore = useRootStore()
 
 const { ingredients, cocktails, ingredient } = storeToRefs(rootStore)
 
-const getCocktails = () => {
+const getCocktails = (): void => {
   rootStore.getCocktails(ingredient.value)
 }
 
-const removeIngredient = () => {
+const removeIngredient = (): void => {
   rootStore.setIngredient()
 }
 

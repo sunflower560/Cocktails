@@ -37,18 +37,18 @@ const route = useRoute()
 const router = useRouter()
 const cocktail = ref<ICocktail>()
 
-const getCocktail = async () => {
+const getCocktail = async (): Promise<void> => {
   const response = await axios.get(`${import.meta.env.VITE_FB_URL}lookup.php?i=${route.params.id}`)
   cocktail.value = response.data.drinks[0] || null
 }
 
 const ingredients = computed(() => {
   const ingredients: IIngredientByCocktail[] = []
-  const cocktailId = cocktail.value?.idDrink
+  const cocktailId: string | undefined = cocktail.value?.idDrink
   if (cocktail.value) {
     for (let i = 1; i <= 15; i++) {
-      const ingredientName = cocktail.value[`strIngredient${i}`]
-      const measure = cocktail.value[`strMeasure${i}`]
+      const ingredientName: string | null = cocktail.value[`strIngredient${i}`]
+      const measure: string | null = cocktail.value[`strMeasure${i}`]
       if (!ingredientName) break
       ingredients.push({
         id: cocktailId,
@@ -60,7 +60,7 @@ const ingredients = computed(() => {
   return ingredients
 })
 
-const goBack = () => {
+const goBack = (): void => {
   router.go(-1)
 }
 
