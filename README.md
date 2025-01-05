@@ -31,3 +31,5 @@ npm run dev
 ```sh
 npm run build
 ```
+
+ссылка на приложение: https://sunflower560.github.io/Cocktails/
